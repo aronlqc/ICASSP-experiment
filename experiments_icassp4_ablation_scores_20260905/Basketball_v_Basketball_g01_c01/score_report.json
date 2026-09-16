@@ -1,0 +1,21 @@
+{
+  "video_id": "Basketball_v_Basketball_g01_c01",
+  "input_video": "data/ucf101_rescue/UCF-101/Basketball/v_Basketball_g01_c01.avi",
+  "input_sha256": "46287910aff38795ad3a648a6ca503990fc8ab9549894145a9c1633356a4c360",
+  "variants": [
+    "no_trajectory",
+    "videomae_only"
+  ],
+  "config": {
+    "seed": 42,
+    "clip_len": 16,
+    "tubelet_size": 2,
+    "image_size": 224,
+    "patch_size": 16,
+    "block_grid": 14,
+    "weights_no_trajectory": "0.85 VideoMAE + 0.10 temporal + 0.03 Sobel + 0.02 RAFT, no trajectory propagation",
+    "weights_videomae_only": "1.00 VideoMAE, no temporal/Sobel/RAFT contribution",
+    "device": "cuda",
+    "raft_iters": 12
+  }
+}

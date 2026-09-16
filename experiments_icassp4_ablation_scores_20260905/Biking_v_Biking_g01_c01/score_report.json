@@ -1,0 +1,21 @@
+{
+  "video_id": "Biking_v_Biking_g01_c01",
+  "input_video": "data/ucf101_rescue/UCF-101/Biking/v_Biking_g01_c01.avi",
+  "input_sha256": "68b3cfd535ed451dcf66b653b81da1551a539e71deafd34bc4392d10cce79714",
+  "variants": [
+    "no_trajectory",
+    "videomae_only"
+  ],
+  "config": {
+    "seed": 42,
+    "clip_len": 16,
+    "tubelet_size": 2,
+    "image_size": 224,
+    "patch_size": 16,
+    "block_grid": 14,
+    "weights_no_trajectory": "0.85 VideoMAE + 0.10 temporal + 0.03 Sobel + 0.02 RAFT, no trajectory propagation",
+    "weights_videomae_only": "1.00 VideoMAE, no temporal/Sobel/RAFT contribution",
+    "device": "cuda",
+    "raft_iters": 12
+  }
+}

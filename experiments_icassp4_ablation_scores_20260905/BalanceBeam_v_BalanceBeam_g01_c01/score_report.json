@@ -1,0 +1,21 @@
+{
+  "video_id": "BalanceBeam_v_BalanceBeam_g01_c01",
+  "input_video": "data/ucf101_rescue/UCF-101/BalanceBeam/v_BalanceBeam_g01_c01.avi",
+  "input_sha256": "3d8d717ffa995294bed828703b4e3af29d7a6012dbf7e11537888f0ddb0bcecd",
+  "variants": [
+    "no_trajectory",
+    "videomae_only"
+  ],
+  "config": {
+    "seed": 42,
+    "clip_len": 16,
+    "tubelet_size": 2,
+    "image_size": 224,
+    "patch_size": 16,
+    "block_grid": 14,
+    "weights_no_trajectory": "0.85 VideoMAE + 0.10 temporal + 0.03 Sobel + 0.02 RAFT, no trajectory propagation",
+    "weights_videomae_only": "1.00 VideoMAE, no temporal/Sobel/RAFT contribution",
+    "device": "cuda",
+    "raft_iters": 12
+  }
+}
