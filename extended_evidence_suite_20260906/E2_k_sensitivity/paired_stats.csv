@@ -1,0 +1,25 @@
+experiment,top_k,comparison,metric,paired_units,left_wins,right_wins,ties,mean_diff,ci95_low,ci95_high,exact_sign_p
+E2,10,RAT-fusion vs Random,cover,20,20,0,0,0.117515,0.073668,0.167420,0.000002
+E2,10,RAT-fusion vs Random,raw_errshare,20,20,0,0,0.096773,0.058491,0.139812,0.000002
+E2,10,RAT-fusion vs Random,inc_errshare,20,20,0,0,0.114485,0.071134,0.161830,0.000002
+E2,10,RAT-fusion vs Shifted-RAT-fusion,cover,20,19,1,0,0.132685,0.084234,0.183349,0.000040
+E2,10,RAT-fusion vs Shifted-RAT-fusion,raw_errshare,20,19,1,0,0.108467,0.068771,0.152332,0.000040
+E2,10,RAT-fusion vs Shifted-RAT-fusion,inc_errshare,20,19,1,0,0.127620,0.082429,0.177959,0.000040
+E2,20,RAT-fusion vs Random,cover,20,20,0,0,0.152005,0.110450,0.194529,0.000002
+E2,20,RAT-fusion vs Random,raw_errshare,20,20,0,0,0.135991,0.098524,0.177250,0.000002
+E2,20,RAT-fusion vs Random,inc_errshare,20,20,0,0,0.148560,0.108225,0.190271,0.000002
+E2,20,RAT-fusion vs Shifted-RAT-fusion,cover,20,20,0,0,0.171796,0.129504,0.218071,0.000002
+E2,20,RAT-fusion vs Shifted-RAT-fusion,raw_errshare,20,20,0,0,0.152177,0.110963,0.193693,0.000002
+E2,20,RAT-fusion vs Shifted-RAT-fusion,inc_errshare,20,20,0,0,0.164864,0.122294,0.208394,0.000002
+E2,30,RAT-fusion vs Random,cover,20,20,0,0,0.170780,0.135217,0.205708,0.000002
+E2,30,RAT-fusion vs Random,raw_errshare,20,20,0,0,0.159891,0.124379,0.195262,0.000002
+E2,30,RAT-fusion vs Random,inc_errshare,20,20,0,0,0.169404,0.133879,0.204916,0.000002
+E2,30,RAT-fusion vs Shifted-RAT-fusion,cover,20,20,0,0,0.191284,0.152018,0.230072,0.000002
+E2,30,RAT-fusion vs Shifted-RAT-fusion,raw_errshare,20,20,0,0,0.176546,0.137972,0.214199,0.000002
+E2,30,RAT-fusion vs Shifted-RAT-fusion,inc_errshare,20,20,0,0,0.185951,0.147264,0.224616,0.000002
+E2,40,RAT-fusion vs Random,cover,20,20,0,0,0.181106,0.147039,0.213952,0.000002
+E2,40,RAT-fusion vs Random,raw_errshare,20,20,0,0,0.174858,0.140514,0.208804,0.000002
+E2,40,RAT-fusion vs Random,inc_errshare,20,20,0,0,0.182064,0.147299,0.214974,0.000002
+E2,40,RAT-fusion vs Shifted-RAT-fusion,cover,20,20,0,0,0.199359,0.160245,0.237302,0.000002
+E2,40,RAT-fusion vs Shifted-RAT-fusion,raw_errshare,20,20,0,0,0.189963,0.150592,0.226599,0.000002
+E2,40,RAT-fusion vs Shifted-RAT-fusion,inc_errshare,20,20,0,0,0.197008,0.157057,0.234224,0.000002

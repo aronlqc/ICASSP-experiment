@@ -1,0 +1,13 @@
+experiment,comparison,metric,paired_units,left_wins,right_wins,ties,mean_diff,ci95_low,ci95_high,exact_sign_p
+E1,RAT-fusion vs Random,cover,20,20,0,0,0.152749,0.112991,0.195044,0.000002
+E1,RAT-fusion vs Random,raw_errshare,20,20,0,0,0.137570,0.100651,0.177838,0.000002
+E1,RAT-fusion vs Random,inc_errshare,20,20,0,0,0.150457,0.111900,0.192305,0.000002
+E1,RAT-fusion vs Shifted-RAT-fusion,cover,20,20,0,0,0.171796,0.128850,0.216774,0.000002
+E1,RAT-fusion vs Shifted-RAT-fusion,raw_errshare,20,20,0,0,0.153093,0.112138,0.195990,0.000002
+E1,RAT-fusion vs Shifted-RAT-fusion,inc_errshare,20,20,0,0,0.165993,0.123275,0.209797,0.000002
+E1,RAT-fusion vs VideoMAE-only,cover,20,17,3,0,0.185288,0.114289,0.252690,0.002577
+E1,RAT-fusion vs VideoMAE-only,raw_errshare,20,18,2,0,0.168758,0.105748,0.230949,0.000402
+E1,RAT-fusion vs VideoMAE-only,inc_errshare,20,18,2,0,0.180870,0.113932,0.243754,0.000402
+E1,RAT-fusion vs RAT+traj,cover,20,12,8,0,0.007298,-0.007192,0.022073,0.503445
+E1,RAT-fusion vs RAT+traj,raw_errshare,20,12,8,0,0.006631,-0.006631,0.020177,0.503445
+E1,RAT-fusion vs RAT+traj,inc_errshare,20,12,8,0,0.007246,-0.007200,0.022467,0.503445
