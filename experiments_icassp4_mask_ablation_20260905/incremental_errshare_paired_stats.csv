@@ -1,0 +1,6 @@
+comparison,metric,n,left_wins,right_wins,ties,mean_diff_left_minus_right,ci95_low,ci95_high,exact_sign_test_p
+RAT-no-trajectory-mask vs Random-mask,incremental_motion_distortion_share,20,20,0,0,0.148558,0.109359,0.190198,0.000002
+RAT-no-trajectory-mask vs Shifted-RAT-fusion-mask,incremental_motion_distortion_share,20,20,0,0,0.164862,0.122479,0.208964,0.000002
+RAT-no-trajectory-mask vs VideoMAE-only-mask,incremental_motion_distortion_share,20,18,2,0,0.179774,0.111933,0.243443,0.000402
+RAT-mask vs RAT-no-trajectory-mask,incremental_motion_distortion_share,20,9,11,0,-0.003675,-0.019909,0.011500,0.823803
+RAT-no-trajectory-mask vs Motion-only-mask,incremental_motion_distortion_share,20,0,20,0,-0.477095,-0.523257,-0.427553,0.000002

@@ -1,0 +1,8 @@
+method,n,incremental_motion_distortion_share_avg,incremental_motion_distortion_share_std,incremental_motion_distortion_lift_avg,incremental_motion_distortion_lift_std,incremental_motion_total_psnr_avg,incremental_motion_total_psnr_std,incremental_motion_high_psnr_avg,incremental_motion_high_psnr_std,incremental_motion_low_psnr_avg,incremental_motion_low_psnr_std
+Motion-only-mask,20,0.722277,0.106308,7.082385,1.028692,15.154328,0.289815,6.707038,0.756641,20.535239,1.559221
+RAT-no-trajectory-mask,20,0.245182,0.090209,2.405837,0.890474,15.014169,0.385911,11.504439,1.662639,15.801338,0.665380
+RAT-mask,20,0.241507,0.098526,2.369266,0.968522,15.000672,0.393009,11.667530,2.000566,15.772142,0.676587
+VideoMAE-only-mask,20,0.065409,0.082235,0.643007,0.810367,14.643526,0.964532,22.468759,8.569935,14.488762,1.191759
+Random-mask,20,0.096624,0.009767,0.947406,0.092572,14.910635,0.509020,15.166569,0.432913,14.885169,0.537179
+Shifted-RAT-fusion-mask,20,0.080320,0.030322,0.787685,0.297416,14.985516,0.565614,16.317487,1.426257,14.884528,0.639044
+Shifted-RAT-mask,20,0.077442,0.031822,0.759152,0.310962,14.983489,0.598311,16.589025,1.844692,14.869133,0.666604
