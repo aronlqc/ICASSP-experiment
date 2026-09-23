@@ -1,0 +1,500 @@
+% Body-local compatibility definitions; the official Template.tex header is unchanged.
+\providecommand{\toprule}{\hline}
+\providecommand{\midrule}{\hline}
+\providecommand{\bottomrule}{\hline}
+
+\ninept
+\maketitle
+
+\begin{abstract}
+Where perturbation lands can matter as much as how much is added. We study
+whether mask policy alone can redirect release error toward motion-salient
+regions when the release backend is fixed. We introduce region-adaptive token
+(RAT) fusion, which combines VideoMAE semantic salience, temporal variation,
+Sobel texture, and RAFT flow to allocate block-level perturbations, together
+with a same-backend mask-isolation protocol. On a fixed balanced subset of 20
+UCF101 videos, RAT beats Random and Shifted fusion on Cover, RawErr, and IncErr
+for all 20/20 videos at \(k=20\), with RAT-minus-Random differences of 0.1520,
+0.1360, and 0.1486 and RAT-minus-Shifted differences of 0.1718, 0.1522, and
+0.1649. The advantage persists across ten master seeds (1,400 successful runs)
+and \(k\in\{10,20,30,40\}\), while RAT+traj. is statistically
+indistinguishable from RAT. These controlled comparisons show that spatial
+alignment, rather than score concentration alone, drives the gain, establishing
+mask policy as a controllable design lever for motion-salience-aligned
+perturbation allocation. For fixed or external masks, the selected low-frequency
+DCT queries additionally admit mask-restricted R\'enyi-DP accounting.
+\end{abstract}
+
+\begin{keywords}
+Video privacy, perturbation allocation, spatiotemporal masking, motion
+salience, R\'enyi differential privacy
+\end{keywords}
+
+\section{Introduction}
+\label{sec:intro}
+
+Where perturbation lands can matter as much as how much perturbation is added.
+Motion-salient regions move across frames, so a fixed spatial region can miss
+the signal that carries motion and activity. Uniform perturbation spends error
+on broad areas, while detector-based anonymization couples localization to
+predefined object categories. More generally, existing video-privacy pipelines
+often couple masking or localization with anonymization, the release backend,
+or recognition evaluation. That coupling makes the independent effect of mask
+allocation difficult to isolate.
+
+We isolate the central allocation question: with the backend input \(Z\),
+selected area \(k\), DCT-Gaussian mechanism \(\mathcal{G}\), calibration
+\(\sigma\), accounting target, and mechanism RNG \(\xi\) controlled, can
+changing only \(M^\pi\) systematically redirect distortion toward
+motion-salient regions? Equation (2) makes this design explicit: the output
+changes through the mask sequence \(M^\pi\), which is the experimental
+variable. RAT cue fusion supplies the proposed mask policy, and the comparisons
+include Random, Shifted fusion, VideoMAE-only, RAT+traj., and a proxy-aligned
+Motion reference.
+
+The study makes three primary contributions. First, it formulates perturbation
+placement as an independently testable design variable and introduces a
+same-backend mask-isolation protocol. Second, RAT fuses semantic, motion,
+texture, and temporal cues for block-level perturbation allocation. Third,
+controlled evidence spans videos, stochastic realizations, selected-area
+budgets, and ablations, identifying the role of spatial alignment and cue
+fusion. Fixed-mask selected-query R\'enyi-DP accounting provides a technical
+foundation for the release backend and its formal scope.
+
+\section{Related Work}
+\label{sec:related}
+
+\noindent\textbf{(a) Video privacy and anonymization.}
+MaskDP studies activity recognition on avatar-anonymized datasets with masked
+differential privacy~\cite{schneider2024maskdp}, and Video-DPRP studies a
+differentially private approach for privacy-preserving action
+recognition~\cite{nken2025videodprp}. STPrivacy treats video as tubelets for
+video-level privacy-preserving action recognition, using adaptive token
+selection and anonymization~\cite{li2023stprivacy}. Ilic et
+al.~\cite{ilic2024selective} and Aslam et al.~\cite{aslam2026tokenprune}
+address related selective or temporally consistent anonymization settings. These
+works combine masks or transformations with recognition objectives and
+evaluation pipelines. They therefore study complete systems, whereas this work
+isolates the allocation variable by fixing the DCT-Gaussian backend and
+calibration and changing only the mask.
+
+\noindent\textbf{(b) Motion-aware masking.}
+Motion-guided masking uses motion cues for spatiotemporal representation
+learning~\cite{fan2023mgm}. VideoMAE supplies the semantic-token representation
+used as the dominant RAT cue~\cite{tong2022videomae}, and RAFT supplies the
+auxiliary flow cue~\cite{teed2020raft}. We use these components as scoring
+signals, repurposing these representations as complementary allocation cues
+and directly testing their value under a controlled release backend. The
+experiment compares semantic, temporal, texture, and flow cue fusion with
+random, shifted, and single-cue controls.
+
+\noindent\textbf{(c) Gaussian and R\'enyi-DP accounting.}
+Differential privacy calibrates randomization to query
+sensitivity~\cite{dwork2006dp}, and R\'enyi-DP composes repeated Gaussian
+releases~\cite{mironov2017rdp}. These principles provide the selected-query
+accounting foundation for the fixed-mask backend, while the experiments focus
+on the independent allocation question.
+
+\section{Method}
+\label{sec:method}
+
+\begin{figure*}[t]
+\centering
+  \includegraphics[width=0.98\textwidth]{figures/rat_method_overview.pdf}
+\caption{Overview of the proposed motion-salience-aligned perturbation
+allocation pipeline. The raw video provides a common backend input and
+multi-cue salience scores; the top-$k$ mask selects blocks for the fixed-mask
+DCT-Gaussian release, while unselected blocks are copied from the backend
+input.}
+\label{fig:main}
+\vspace{-0.25in}
+\end{figure*}
+
+\subsection{Perturbation-allocation setup}
+
+Let \(X=(x_1,\ldots,x_T)\) denote the raw video used for evaluation and
+\(Z=(z_1,\ldots,z_T)\) the common backend input to the controlled
+DCT-Gaussian mechanism. Each frame is partitioned into a \(B\times B\) block
+grid, with \(B=14\) in our implementation. A mask policy \(\pi\) produces
+scores \(S_t^\pi\in\mathrm{R}^{B\times B}\) and selects
+\begin{equation}
+M_t^\pi=\operatorname{TopK}_k(S_t^\pi), \qquad |M_t^\pi|=k .
+\end{equation}
+Equation (2) is the central controlled design: for every clip and policy, all
+terms except the mask sequence \(M^\pi\) are fixed. The backend input \(Z\),
+selected-area budget \(k=20\), DCT-Gaussian mechanism \(\mathcal{G}\), Gaussian
+calibration \(\sigma\), accounting target, and Gaussian RNG stream \(\xi\) are
+matched across policies:
+\begin{equation}
+Y^\pi=\mathcal{G}(Z,M^\pi;\sigma,\xi).
+\end{equation}
+Thus, \(M^\pi\) is the experimental variable. In the saved runs, \(Z\) is the
+common pre-release clip-preprocessing and flow-guided merge output from the
+original RAT-DP directory; all policies reuse it. The Gaussian calibration and
+RNG stream are matched across policies, while selected-block ordering remains
+policy-specific.
+
+To evaluate allocation, let \(R_t\) be a top-\(k\) motion-proxy mask computed
+from frame differences in the raw video, and write \(R(X)=\{R_t\}_{t=1}^T\).
+For any nonnegative per-pixel distortion map \(D\), define
+\begin{equation}
+\Phi_R(D)=
+\frac{\sum_{t,p\in R_t}D_{t,p}}{\sum_{t,p}D_{t,p}} .
+\end{equation}
+We report mask-proxy overlap, raw-video release error share, and incremental
+backend perturbation share:
+\begin{equation}
+\begin{gathered}
+A_{\mathrm{cov}}(\pi)=
+\frac{\sum_t |M_t^\pi\cap R_t|}{\sum_t |R_t|},\\
+A_{\mathrm{raw}}(\pi)=\Phi_R(D^X), \qquad
+D^X_{t,p}=\|X_t(p)-Y_t^\pi(p)\|_2^2,\\
+A_{\mathrm{inc}}(\pi)=\Phi_R(D^Z), \qquad
+D^Z_{t,p}=\|Z_t(p)-Y_t^\pi(p)\|_2^2 .
+\end{gathered}
+\end{equation}
+RawErr therefore measures total release error relative to the raw evaluation
+video, while IncErr isolates distortion newly introduced by the fixed
+DCT-Gaussian backend relative to \(Z\). The motion proxy is an operational
+reference for quantifying motion-aligned allocation, and these quantities are
+empirical allocation scores.
+
+\subsection{RAT cue-fusion policy}
+
+RAT computes a block score from four normalized cues:
+\begin{equation}
+s_{t,b}=0.85\tilde a_{t,b}+0.10\tilde d_{t,b}
+       +0.03\tilde g_{t,b}+0.02\tilde m_{t,b}.
+\end{equation}
+Here \(\tilde a\) is VideoMAE semantic-token salience~\cite{tong2022videomae},
+\(\tilde d\) is tubelet temporal variation, \(\tilde g\) is Sobel texture, and
+\(\tilde m\) is RAFT flow magnitude~\cite{teed2020raft}. Each cue is min-max
+normalized on the block grid and the fused map is spatially smoothed. These
+weights are fixed a priori and are not tuned against the reported evaluation
+proxy, avoiding metric-targeted tuning.
+All video-dependent cues for RAT fusion, RAT+traj., and VideoMAE-only are
+computed from \(X\) after the same frame resizing and clip preprocessing used
+by the saved run; \(Z\) is used as the common release-backend input, not to
+compute these selector scores.
+
+The main RAT-fusion row selects the top-\(k\) blocks from this per-frame fused
+score. We also evaluate a trajectory-smoothed variant, RAT+traj., that
+propagates the same scores along block trajectories induced by average RAFT
+flow over tubelets of length 2. For a trajectory \(j\), the path score is
+\begin{equation}
+u_j=0.6\,\mathrm{mean}(s_j)+0.4\,\mathrm{mean}(\mathrm{top25\%}(s_j)).
+\end{equation}
+We add selector noise with standard deviation \(0.05\), apply a softmax with
+inverse temperature 8, and update frame scores with a flow-confidence decay
+\(\exp(-\|v\|/12)\) and temporal smoothing weight 0.8. The top-\(k\) blocks
+of the resulting score map form the RAT+traj. mask. This selector noise is
+distinct from Gaussian mechanism noise. All trajectory parameters are fixed a
+priori so the ablation isolates the value of trajectory smoothing.
+
+\subsection{Fixed-mask DCT-Gaussian backend}
+
+Given a mask sequence \(M=(M_1,\ldots,M_T)\), each selected block is converted
+to YCbCr. The backend keeps only the \(2\times2\) low-frequency DCT
+coefficients of the Y channel. For selected block \(b\) in frame \(t\), the
+query vector is clipped as
+\begin{equation}
+\bar q_{t,b}(Z)=q_{t,b}(Z)\min\{1,C/\|q_{t,b}(Z)\|_2\},
+\end{equation}
+with \(C=2\), and released as
+\begin{equation}
+\tilde q_{t,b}=\bar q_{t,b}(Z)+\mathcal{N}(0,\sigma^2I).
+\end{equation}
+The selected block is reconstructed from the noisy low-frequency Y-DCT
+coefficients, zero high-frequency Y coefficients, and neutral chroma. Unselected
+blocks are copied from the backend input. This simple backend makes the
+protected query explicit and keeps the release transformation fixed across mask
+policies.
+
+\subsection{Mask policies}
+
+All policy rows use the same backend and differ only in \(M\). RAT fusion
+selects the top-\(k\) fused scores. VideoMAE-only sets the first cue weight to
+one and the other weights to zero. RAT+traj. applies the trajectory smoothing
+above. Random uses content-independent random scores. Shifted fusion
+rolls the RAT-fusion score map by a fixed public spatial offset of three block
+rows and four block columns, with wrap-around and the same offset in every
+frame. This preserves the score distribution while breaking spatial alignment,
+so it tests whether gains come from alignment rather than score concentration.
+The Motion reference selects top-\(k\) blocks from frame-difference scores on
+\(Z\) and is evaluated against the closely related raw-video proxy \(R(X)\). It
+is a deliberately proxy-aligned sanity-check reference.
+
+\section{Fixed-Mask Selected-Query Accounting}
+\label{sec:privacy}
+
+\subsection{Threat model and scope}
+
+The protected object is the concatenated vector of clipped \(2\times2\)
+low-frequency Y-DCT coefficients from selected blocks. Let \(M\) be fixed
+independently of the private backend input, or supplied externally. Define
+\(Z\sim_M Z'\) when two backend-input videos agree outside the selected
+coordinates of \(M\), and may differ only in selected blocks. The accounting
+guarantee is conditioned on \(M\): it accounts for the selected queries under
+the mask-restricted adjacency, while video-dependent RAT selection is outside
+this selected-query accounting. Because unselected blocks are copied from
+\(Z\), arbitrary changes to private unselected content also prevent a
+full-rendered-video DP claim. A private end-to-end system would therefore
+require accounting for selection and protection of unselected content.
+
+\subsection{R\'enyi-DP accounting}
+
+For one frame, concatenate the clipped selected-block DCT queries. Under
+replacement adjacency, clipping each block vector to \(C\) gives sensitivity
+\begin{equation}
+\Delta \leq 2C\sqrt{k}.
+\end{equation}
+The Gaussian mechanism with variance \(\sigma^2\) satisfies, at order
+\(\alpha>1\),
+\begin{equation}
+\rho_\alpha=\frac{\alpha\Delta^2}{2\sigma^2}.
+\end{equation}
+Composing over \(T\) released frames and converting to
+\((\epsilon,\delta)\)-DP gives
+\begin{equation}
+\epsilon(\alpha)=T\rho_\alpha+\frac{\log(1/\delta)}{\alpha-1}.
+\end{equation}
+Experiments use \(k=20\), \(C=2\), and \(\delta=10^{-4}\). Across the 20-video
+subset, \(T\) ranges from 53 to 379, \(\sigma\) ranges from 82.95 to 222.11,
+and the optimized accounting uses \(\alpha=4\), giving
+\(\epsilon\in[7.95,8.00]\).
+
+\begin{figure*}[t]
+\centering
+\small
+\textbf{(a)}\quad
+\includegraphics[width=0.78\linewidth]{figures/E2_k_sensitivity_deltas.png}\\[-0.5ex]
+\textbf{(b)}\quad
+\includegraphics[width=0.78\linewidth]{figures/mask_policy_example.png}
+\caption{Quantitative budget sensitivity and qualitative mask evidence.
+(a) RAT-fusion-minus-control differences for \(k\in\{10,20,30,40\}\);
+points are means over 20 paired videos and error bars are 95\% bootstrap
+confidence intervals. (b) Raw frame and Motion reference, RAT,
+Random, and Shifted-fusion masks for one example.}
+\label{fig:vis}
+\end{figure*}
+
+\section{Experiments}
+\label{sec:exp}
+
+\subsection{Protocol and metrics}
+
+% PDF link target: https://github.com/aronlqc/ICASSP-experiment.git
+The code and experiment materials for this study are publicly available at
+\mbox{GitHub: ICASSP-experiment}.
+
+We evaluate 20 videos from UCF101~\cite{soomro2012ucf101}: four clips each
+from BalanceBeam, Basketball, Biking, Diving, and WalkingWithDog. We use a
+fixed balanced 20-video subset, with four clips from each of five classes, and
+retain exact clip identities in the run manifest. Within each clip, all rows
+reuse the same saved pre-release backend input \(Z\), selected area,
+DCT-Gaussian backend, Gaussian calibration, \((\epsilon,\delta)\) accounting
+target, and Gaussian mechanism RNG stream. Only the mask policy changes.
+Gaussian mechanism noise is distinct from selector randomness, and the primary
+comparison uses one fixed mask-construction realization for Random and
+RAT+traj.; Sec.~\ref{sec:e1} repeats the stochastic construction across ten
+master seeds.
+
+The reference \(R_t\) is an operational motion-salience reference built from
+frame differences in the raw video. We
+compute grayscale absolute differences, use one-sided differences at the first
+and last frames and the average of previous and next differences in interior
+frames, average to the \(14\times14\) block grid, robustly normalize using the
+2--98\% quantile range, and select the top-\(k\) blocks. Cover, RawErr, and
+IncErr are the alignment scores defined in Sec.~\ref{sec:method}. Complement
+PSNR is computed outside \(R_t\) using raw-video error.
+
+The primary comparison fixes the selected area at \(k=20\) of 196 blocks,
+about 10.16\% of pixels after mapping blocks back to the native video grid.
+The Gaussian calibration and RNG stream are matched across policies; selected-
+block ordering remains policy-specific. Section~\ref{sec:e2} repeats the
+comparison at four selected-area budgets.
+
+\begin{table*}[t]
+\caption{Aggregate same-backend mask-isolation results on 20 UCF101 videos.
+Only the mask policy changes.}
+\label{tab:mask}
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Policy} & \textbf{PSNR} & \textbf{Cover} & \textbf{RawErr} & \textbf{IncErr} & \textbf{Comp. PSNR} \\
+\midrule
+Motion reference & 14.8115 & 0.7316 & 0.6727 & 0.7223 & 19.2696 \\
+RAT fusion & 14.7087 & 0.2550 & 0.2408 & 0.2452 & 15.3111 \\
+RAT+traj. & 14.6923 & 0.2511 & 0.2374 & 0.2415 & 15.2809 \\
+VideoMAE-only & 14.3719 & 0.0697 & 0.0730 & 0.0654 & 14.0997 \\
+Random & 14.6338 & 0.1030 & 0.1048 & 0.0966 & 14.4951 \\
+Shifted fusion & 14.7107 & 0.0832 & 0.0887 & 0.0803 & 14.4885 \\
+\bottomrule
+\end{tabular}
+\par\medskip
+\caption{Paired RAT-fusion-minus-control differences over 20 videos. Exact sign
+tests give \(p=2.0{\times}10^{-6}\) for Random/Shifted,
+\(p\leq2.58{\times}10^{-3}\) for VideoMAE-only, and \(p\geq0.824\) for
+RAT+traj.}
+\label{tab:paired}
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Control} & \textbf{\(\Delta\)Cover} & \textbf{\(\Delta\)RawErr} & \textbf{\(\Delta\)IncErr} & \textbf{Outcome} \\
+\midrule
+Random & 0.1520 & 0.1360 & 0.1486 & 20/20 on all \\
+Shifted fusion & 0.1718 & 0.1522 & 0.1649 & 20/20 on all \\
+VideoMAE-only & 0.1853 & 0.1678 & 0.1798 & 17/20--18/20 \\
+RAT+traj. & 0.0039 & 0.0034 & 0.0037 & n.s. \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Mask-isolation results}
+
+Mask policy alone produces a large and systematic shift in where perturbation
+lands. At \(k=20\), RAT beats Random on Cover, RawErr, and IncErr for all 20/20
+videos, with RAT-minus-Random differences of \(0.1520\), \(0.1360\), and
+\(0.1486\). RAT also beats Shifted fusion on all three metrics for all 20/20
+videos, with differences of \(0.1718\), \(0.1522\), and \(0.1649\). Exact sign
+tests give \(p=2.0{\times}10^{-6}\) for both comparisons. Because Shifted fusion
+preserves the score distribution while breaking spatial alignment, its failure
+attributes the RAT gain to spatial correspondence rather than score
+concentration.
+
+To make the unit of analysis explicit, we re-used the saved per-video logs and
+recomputed paired RAT-minus-control differences without regenerating videos.
+Figure~\ref{fig:per_video_reanalysis} reports the mean difference with a 95\%
+paired bootstrap confidence interval, the median difference, and paired Hedges
+$g_z$ for each metric. Against Random, the mean differences are $0.1520$,
+$0.1360$, and $0.1486$ for Cover, RawErr, and IncErr, with corresponding
+medians $0.1371$, $0.1338$, and $0.1407$ and $g_z=1.47$, $1.42$, and $1.48$.
+Against Shifted fusion, the mean differences are $0.1718$,
+$0.1522$, and $0.1649$, with medians $0.1714$, $0.1491$, and $0.1668$ and
+$g_z=1.58$, $1.50$, and $1.55$. The 95\% bootstrap intervals exclude zero for
+both controls on all three metrics. The VideoMAE-only comparison also remains
+large (mean IncErr difference $0.1798$, median $0.1687$, $g_z=1.12$), whereas
+RAT versus RAT+traj. is small (mean IncErr difference $0.0037$, median
+$0.0072$, $g_z=0.10$; 95\% CI $[-0.0119,0.0197]$), confirming that the
+trajectory-smoothed variant adds no measurable allocation gain.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/per_video_effects.pdf}
+\caption{Per-video paired reanalysis on the 20-video subset. Circles show mean
+RAT-minus-control differences with 95\% percentile paired-bootstrap confidence
+intervals; diamonds show median differences; labels report paired Hedges
+$g_z$. The analysis reuses the saved per-video metrics and does not regenerate
+videos.}
+\label{fig:per_video_reanalysis}
+\vspace{-0.08in}
+\end{figure*}
+
+RAT substantially exceeds VideoMAE-only on 17/20--18/20 videos
+\((p\leq2.58{\times}10^{-3})\), showing that semantic salience alone does not
+explain the gain. RAT and RAT+traj. are statistically indistinguishable
+\((p\geq0.824)\), an informative negative result: additional trajectory
+smoothing is unnecessary for the observed allocation gain. The proxy-aligned
+Motion reference is higher on all 20 videos because it is deliberately aligned
+with the evaluation proxy; it serves as a sanity-check reference. Figure~\ref{fig:vis}(b)
+illustrates these masks.
+
+\subsection{E1: Robustness across stochastic realizations}
+\label{sec:e1}
+
+The allocation advantage replicates across all ten stochastic realizations.
+Across ten master seeds (1,400 successful runs), we first average metrics over
+seeds within each video and then pair the 20 videos. RAT beats Random and
+Shifted on all videos and metrics; the IncErr differences are \(+0.1505\) and
+\(+0.1660\) (\(p=2.0{\times}10^{-6}\)). Every run-level RAT-minus-Random
+difference is positive, while RAT and RAT+traj. remain indistinguishable
+(\(p=0.503\)).
+
+\subsection{E2: Selected-area sensitivity}
+\label{sec:e2}
+
+For \(k=10,20,30,40\), we recalibrate \(\sigma\) per clip and budget to keep
+\(\epsilon=8,\delta=10^{-4}\) (560 successful runs). Figure~\ref{fig:vis}(a)
+shows positive RAT-minus-Random and RAT-minus-Shifted differences throughout.
+All comparisons are 20/20 except \(k=10\) versus Shifted, which is 19/20.
+The allocation advantage persists across a four-fold range of selected-area
+budgets under matched \(\epsilon=8\) recalibration.
+
+\section{Discussion and Conclusion}
+\label{sec:discussion}
+
+Perturbation placement materially changes where release error accumulates even
+when the backend is identical. RAT exploits this degree of freedom through
+multi-cue fusion of semantic, temporal, texture, and flow signals. At \(k=20\),
+it beats Random and Shifted on all three metrics for 20/20 videos, with IncErr
+improvements of \(+0.1486\) and \(+0.1649\). The advantage replicates across
+ten master seeds and persists for \(k\in\{10,20,30,40\}\) under matched
+\(\epsilon=8\) recalibration. VideoMAE-only is weaker, while trajectory
+smoothing gives no measurable allocation gain. These results establish mask
+policy as a controllable design lever, and same-backend isolation provides a
+clean way to study this design variable. The present R\'enyi-DP accounting
+applies to selected DCT queries under fixed or external masks; extending this
+controlled allocation framework to end-to-end private selection and release is
+a natural next step.
+
+\clearpage
+
+\begin{thebibliography}{11}
+
+\bibitem{dwork2006dp}
+C. Dwork, F. McSherry, K. Nissim, and A. Smith, ``Calibrating noise to
+sensitivity in private data analysis,'' in \emph{Proc. TCC}, 2006.
+
+\bibitem{mironov2017rdp}
+I. Mironov, ``R\'enyi differential privacy,'' in \emph{Proc. IEEE CSF}, 2017.
+
+\bibitem{schneider2024maskdp}
+D. Schneider, S. Sajadmanesh, V. Sehwag, M. S. Sarfraz, R. Stiefelhagen,
+L. Lyu, and V. Sharma, ``Activity recognition on avatar-anonymized datasets
+with masked differential privacy,'' arXiv:2410.17098, 2024.
+
+\bibitem{nken2025videodprp}
+A. T. A. Nken, S. McKeever, P. Corcoran, and I. Ullah, ``Video-DPRP: A
+differentially private approach for visual privacy-preserving video human
+activity recognition,'' in \emph{Machine Learning and Knowledge Discovery in
+Databases, ECML PKDD 2025, Proceedings}, LNCS 16017, pp. 345--362, 2026,
+doi:10.1007/978-3-032-06096-9\_20.
+
+\bibitem{fan2023mgm}
+D. Fan, J. Wang, S. Liao, Y. Zhu, V. Bhat, H. Santos-Villalobos, R. MV, and
+X. Li, ``Motion-guided masking for spatiotemporal representation learning,''
+in \emph{Proc. ICCV}, 2023.
+
+\bibitem{li2023stprivacy}
+M. Li, X. Xu, H. Fan, P. Zhou, J. Liu, J.-W. Liu, J. Li, J. Keppo,
+M. Z. Shou, and S. Yan, ``STPrivacy: Spatio-temporal privacy-preserving action
+recognition,'' in \emph{Proc. ICCV}, pp. 5106--5115, 2023.
+
+\bibitem{ilic2024selective}
+F. Ilic, H. Zhao, T. Pock, and R. P. Wildes, ``Selective, interpretable, and
+motion consistent privacy attribute obfuscation for action recognition,'' in
+\emph{Proc. CVPR}, 2024.
+
+\bibitem{aslam2026tokenprune}
+N. Aslam, A. Ray, J. B. Haurum, L. Esterle, and K. Nasrollahi, ``From pixels
+to privacy: Temporally consistent video anonymization via token pruning for
+privacy preserving action recognition,'' in \emph{Proc. CVPR Workshops}, 2026.
+
+\bibitem{tong2022videomae}
+Z. Tong, Y. Song, J. Wang, and L. Wang, ``VideoMAE: Masked autoencoders are
+data-efficient learners for self-supervised video pre-training,'' in
+\emph{Proc. NeurIPS}, 2022.
+
+\bibitem{teed2020raft}
+Z. Teed and J. Deng, ``RAFT: Recurrent all-pairs field transforms for optical
+flow,'' in \emph{Proc. ECCV}, 2020.
+
+\bibitem{soomro2012ucf101}
+K. Soomro, A. R. Zamir, and M. Shah, ``UCF101: A dataset of 101 human actions
+classes from videos in the wild,'' CRCV-TR-12-01, 2012.
+
+\end{thebibliography}

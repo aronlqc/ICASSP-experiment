@@ -1,0 +1,241 @@
+video_id,metric,control,rat_value,control_value,difference
+BalanceBeam_v_BalanceBeam_g01_c01,Cover,Random,0.210261000,0.103680000,0.106581000
+BalanceBeam_v_BalanceBeam_g02_c01,Cover,Random,0.429827000,0.109173000,0.320654000
+BalanceBeam_v_BalanceBeam_g03_c01,Cover,Random,0.441153000,0.104832000,0.336321000
+BalanceBeam_v_BalanceBeam_g10_c03,Cover,Random,0.412908000,0.091449000,0.321459000
+Basketball_v_Basketball_g01_c01,Cover,Random,0.157413000,0.094351000,0.063062000
+Basketball_v_Basketball_g02_c01,Cover,Random,0.312542000,0.090758000,0.221784000
+Basketball_v_Basketball_g03_c01,Cover,Random,0.337167000,0.111321000,0.225846000
+Basketball_v_Basketball_g04_c01,Cover,Random,0.177698000,0.103710000,0.073988000
+Biking_v_Biking_g01_c01,Cover,Random,0.295175000,0.104925000,0.190250000
+Biking_v_Biking_g02_c01,Cover,Random,0.214874000,0.102847000,0.112027000
+Biking_v_Biking_g03_c01,Cover,Random,0.295618000,0.098154000,0.197464000
+Biking_v_Biking_g04_c01,Cover,Random,0.187960000,0.098538000,0.089422000
+Diving_v_Diving_g01_c01,Cover,Random,0.183052000,0.100258000,0.082794000
+Diving_v_Diving_g02_c01,Cover,Random,0.153481000,0.118280000,0.035201000
+Diving_v_Diving_g03_c01,Cover,Random,0.132463000,0.107909000,0.024554000
+Diving_v_Diving_g04_c01,Cover,Random,0.204834000,0.104816000,0.100018000
+WalkingWithDog_v_WalkingWithDog_g01_c01,Cover,Random,0.284778000,0.104829000,0.179949000
+WalkingWithDog_v_WalkingWithDog_g02_c01,Cover,Random,0.281168000,0.097368000,0.183800000
+WalkingWithDog_v_WalkingWithDog_g03_c01,Cover,Random,0.126313000,0.113501000,0.012812000
+WalkingWithDog_v_WalkingWithDog_g04_c01,Cover,Random,0.261167000,0.099049000,0.162118000
+BalanceBeam_v_BalanceBeam_g01_c01,Cover,Shifted fusion,0.210261000,0.096740000,0.113521000
+BalanceBeam_v_BalanceBeam_g02_c01,Cover,Shifted fusion,0.429827000,0.054497000,0.375330000
+BalanceBeam_v_BalanceBeam_g03_c01,Cover,Shifted fusion,0.441153000,0.067040000,0.374113000
+BalanceBeam_v_BalanceBeam_g10_c03,Cover,Shifted fusion,0.412908000,0.117077000,0.295831000
+Basketball_v_Basketball_g01_c01,Cover,Shifted fusion,0.157413000,0.067176000,0.090237000
+Basketball_v_Basketball_g02_c01,Cover,Shifted fusion,0.312542000,0.061076000,0.251466000
+Basketball_v_Basketball_g03_c01,Cover,Shifted fusion,0.337167000,0.124063000,0.213104000
+Basketball_v_Basketball_g04_c01,Cover,Shifted fusion,0.177698000,0.154081000,0.023617000
+Biking_v_Biking_g01_c01,Cover,Shifted fusion,0.295175000,0.091035000,0.204140000
+Biking_v_Biking_g02_c01,Cover,Shifted fusion,0.214874000,0.134394000,0.080480000
+Biking_v_Biking_g03_c01,Cover,Shifted fusion,0.295618000,0.078010000,0.217608000
+Biking_v_Biking_g04_c01,Cover,Shifted fusion,0.187960000,0.103659000,0.084301000
+Diving_v_Diving_g01_c01,Cover,Shifted fusion,0.183052000,0.057369000,0.125683000
+Diving_v_Diving_g02_c01,Cover,Shifted fusion,0.153481000,0.081869000,0.071612000
+Diving_v_Diving_g03_c01,Cover,Shifted fusion,0.132463000,0.079956000,0.052507000
+Diving_v_Diving_g04_c01,Cover,Shifted fusion,0.204834000,0.056165000,0.148669000
+WalkingWithDog_v_WalkingWithDog_g01_c01,Cover,Shifted fusion,0.284778000,0.040320000,0.244458000
+WalkingWithDog_v_WalkingWithDog_g02_c01,Cover,Shifted fusion,0.281168000,0.059443000,0.221725000
+WalkingWithDog_v_WalkingWithDog_g03_c01,Cover,Shifted fusion,0.126313000,0.072928000,0.053385000
+WalkingWithDog_v_WalkingWithDog_g04_c01,Cover,Shifted fusion,0.261167000,0.067036000,0.194131000
+BalanceBeam_v_BalanceBeam_g01_c01,Cover,VideoMAE-only,0.210261000,0.004021000,0.206240000
+BalanceBeam_v_BalanceBeam_g02_c01,Cover,VideoMAE-only,0.429827000,0.000000000,0.429827000
+BalanceBeam_v_BalanceBeam_g03_c01,Cover,VideoMAE-only,0.441153000,0.000000000,0.441153000
+BalanceBeam_v_BalanceBeam_g10_c03,Cover,VideoMAE-only,0.412908000,0.000000000,0.412908000
+Basketball_v_Basketball_g01_c01,Cover,VideoMAE-only,0.157413000,0.021956000,0.135457000
+Basketball_v_Basketball_g02_c01,Cover,VideoMAE-only,0.312542000,0.171205000,0.141337000
+Basketball_v_Basketball_g03_c01,Cover,VideoMAE-only,0.337167000,0.028601000,0.308566000
+Basketball_v_Basketball_g04_c01,Cover,VideoMAE-only,0.177698000,0.005519000,0.172179000
+Biking_v_Biking_g01_c01,Cover,VideoMAE-only,0.295175000,0.119478000,0.175697000
+Biking_v_Biking_g02_c01,Cover,VideoMAE-only,0.214874000,0.043450000,0.171424000
+Biking_v_Biking_g03_c01,Cover,VideoMAE-only,0.295618000,0.000123000,0.295495000
+Biking_v_Biking_g04_c01,Cover,VideoMAE-only,0.187960000,0.144694000,0.043266000
+Diving_v_Diving_g01_c01,Cover,VideoMAE-only,0.183052000,0.054470000,0.128582000
+Diving_v_Diving_g02_c01,Cover,VideoMAE-only,0.153481000,0.195749000,-0.042268000
+Diving_v_Diving_g03_c01,Cover,VideoMAE-only,0.132463000,0.301806000,-0.169343000
+Diving_v_Diving_g04_c01,Cover,VideoMAE-only,0.204834000,0.045192000,0.159642000
+WalkingWithDog_v_WalkingWithDog_g01_c01,Cover,VideoMAE-only,0.284778000,0.017364000,0.267414000
+WalkingWithDog_v_WalkingWithDog_g02_c01,Cover,VideoMAE-only,0.281168000,0.009549000,0.271619000
+WalkingWithDog_v_WalkingWithDog_g03_c01,Cover,VideoMAE-only,0.126313000,0.223210000,-0.096897000
+WalkingWithDog_v_WalkingWithDog_g04_c01,Cover,VideoMAE-only,0.261167000,0.007697000,0.253470000
+BalanceBeam_v_BalanceBeam_g01_c01,Cover,RAT+traj.,0.210261000,0.211398000,-0.001137000
+BalanceBeam_v_BalanceBeam_g02_c01,Cover,RAT+traj.,0.429827000,0.409673000,0.020154000
+BalanceBeam_v_BalanceBeam_g03_c01,Cover,RAT+traj.,0.441153000,0.446614000,-0.005461000
+BalanceBeam_v_BalanceBeam_g10_c03,Cover,RAT+traj.,0.412908000,0.384397000,0.028511000
+Basketball_v_Basketball_g01_c01,Cover,RAT+traj.,0.157413000,0.102394000,0.055019000
+Basketball_v_Basketball_g02_c01,Cover,RAT+traj.,0.312542000,0.295675000,0.016867000
+Basketball_v_Basketball_g03_c01,Cover,RAT+traj.,0.337167000,0.367630000,-0.030463000
+Basketball_v_Basketball_g04_c01,Cover,RAT+traj.,0.177698000,0.207575000,-0.029877000
+Biking_v_Biking_g01_c01,Cover,RAT+traj.,0.295175000,0.200836000,0.094339000
+Biking_v_Biking_g02_c01,Cover,RAT+traj.,0.214874000,0.221501000,-0.006627000
+Biking_v_Biking_g03_c01,Cover,RAT+traj.,0.295618000,0.362866000,-0.067248000
+Biking_v_Biking_g04_c01,Cover,RAT+traj.,0.187960000,0.218041000,-0.030081000
+Diving_v_Diving_g01_c01,Cover,RAT+traj.,0.183052000,0.162369000,0.020683000
+Diving_v_Diving_g02_c01,Cover,RAT+traj.,0.153481000,0.140443000,0.013038000
+Diving_v_Diving_g03_c01,Cover,RAT+traj.,0.132463000,0.101128000,0.031335000
+Diving_v_Diving_g04_c01,Cover,RAT+traj.,0.204834000,0.222849000,-0.018015000
+WalkingWithDog_v_WalkingWithDog_g01_c01,Cover,RAT+traj.,0.284778000,0.253315000,0.031463000
+WalkingWithDog_v_WalkingWithDog_g02_c01,Cover,RAT+traj.,0.281168000,0.305923000,-0.024755000
+WalkingWithDog_v_WalkingWithDog_g03_c01,Cover,RAT+traj.,0.126313000,0.116694000,0.009619000
+WalkingWithDog_v_WalkingWithDog_g04_c01,Cover,RAT+traj.,0.261167000,0.291130000,-0.029963000
+BalanceBeam_v_BalanceBeam_g01_c01,RawErr,Random,0.208067000,0.097258000,0.110809000
+BalanceBeam_v_BalanceBeam_g02_c01,RawErr,Random,0.404538000,0.115068000,0.289470000
+BalanceBeam_v_BalanceBeam_g03_c01,RawErr,Random,0.419823000,0.099374000,0.320449000
+BalanceBeam_v_BalanceBeam_g10_c03,RawErr,Random,0.395098000,0.101853000,0.293245000
+Basketball_v_Basketball_g01_c01,RawErr,Random,0.141384000,0.101458000,0.039926000
+Basketball_v_Basketball_g02_c01,RawErr,Random,0.285585000,0.096435000,0.189150000
+Basketball_v_Basketball_g03_c01,RawErr,Random,0.311920000,0.112722000,0.199198000
+Basketball_v_Basketball_g04_c01,RawErr,Random,0.167105000,0.110483000,0.056622000
+Biking_v_Biking_g01_c01,RawErr,Random,0.287315000,0.130135000,0.157180000
+Biking_v_Biking_g02_c01,RawErr,Random,0.214501000,0.111080000,0.103421000
+Biking_v_Biking_g03_c01,RawErr,Random,0.282166000,0.106469000,0.175697000
+Biking_v_Biking_g04_c01,RawErr,Random,0.160730000,0.092729000,0.068001000
+Diving_v_Diving_g01_c01,RawErr,Random,0.191153000,0.108723000,0.082430000
+Diving_v_Diving_g02_c01,RawErr,Random,0.140057000,0.111369000,0.028688000
+Diving_v_Diving_g03_c01,RawErr,Random,0.122363000,0.099978000,0.022385000
+Diving_v_Diving_g04_c01,RawErr,Random,0.203094000,0.113491000,0.089603000
+WalkingWithDog_v_WalkingWithDog_g01_c01,RawErr,Random,0.261959000,0.100336000,0.161623000
+WalkingWithDog_v_WalkingWithDog_g02_c01,RawErr,Random,0.244993000,0.081600000,0.163393000
+WalkingWithDog_v_WalkingWithDog_g03_c01,RawErr,Random,0.118547000,0.106939000,0.011608000
+WalkingWithDog_v_WalkingWithDog_g04_c01,RawErr,Random,0.256201000,0.099312000,0.156889000
+BalanceBeam_v_BalanceBeam_g01_c01,RawErr,Shifted fusion,0.208067000,0.094945000,0.113122000
+BalanceBeam_v_BalanceBeam_g02_c01,RawErr,Shifted fusion,0.404538000,0.067390000,0.337148000
+BalanceBeam_v_BalanceBeam_g03_c01,RawErr,Shifted fusion,0.419823000,0.073091000,0.346732000
+BalanceBeam_v_BalanceBeam_g10_c03,RawErr,Shifted fusion,0.395098000,0.117101000,0.277997000
+Basketball_v_Basketball_g01_c01,RawErr,Shifted fusion,0.141384000,0.065844000,0.075540000
+Basketball_v_Basketball_g02_c01,RawErr,Shifted fusion,0.285585000,0.067231000,0.218354000
+Basketball_v_Basketball_g03_c01,RawErr,Shifted fusion,0.311920000,0.131683000,0.180237000
+Basketball_v_Basketball_g04_c01,RawErr,Shifted fusion,0.167105000,0.163288000,0.003817000
+Biking_v_Biking_g01_c01,RawErr,Shifted fusion,0.287315000,0.120993000,0.166322000
+Biking_v_Biking_g02_c01,RawErr,Shifted fusion,0.214501000,0.135669000,0.078832000
+Biking_v_Biking_g03_c01,RawErr,Shifted fusion,0.282166000,0.083521000,0.198645000
+Biking_v_Biking_g04_c01,RawErr,Shifted fusion,0.160730000,0.102615000,0.058115000
+Diving_v_Diving_g01_c01,RawErr,Shifted fusion,0.191153000,0.069303000,0.121850000
+Diving_v_Diving_g02_c01,RawErr,Shifted fusion,0.140057000,0.080642000,0.059415000
+Diving_v_Diving_g03_c01,RawErr,Shifted fusion,0.122363000,0.078507000,0.043856000
+Diving_v_Diving_g04_c01,RawErr,Shifted fusion,0.203094000,0.071196000,0.131898000
+WalkingWithDog_v_WalkingWithDog_g01_c01,RawErr,Shifted fusion,0.261959000,0.043177000,0.218782000
+WalkingWithDog_v_WalkingWithDog_g02_c01,RawErr,Shifted fusion,0.244993000,0.061464000,0.183529000
+WalkingWithDog_v_WalkingWithDog_g03_c01,RawErr,Shifted fusion,0.118547000,0.073116000,0.045431000
+WalkingWithDog_v_WalkingWithDog_g04_c01,RawErr,Shifted fusion,0.256201000,0.072319000,0.183882000
+BalanceBeam_v_BalanceBeam_g01_c01,RawErr,VideoMAE-only,0.208067000,0.011669000,0.196398000
+BalanceBeam_v_BalanceBeam_g02_c01,RawErr,VideoMAE-only,0.404538000,0.020766000,0.383772000
+BalanceBeam_v_BalanceBeam_g03_c01,RawErr,VideoMAE-only,0.419823000,0.012955000,0.406868000
+BalanceBeam_v_BalanceBeam_g10_c03,RawErr,VideoMAE-only,0.395098000,0.022125000,0.372973000
+Basketball_v_Basketball_g01_c01,RawErr,VideoMAE-only,0.141384000,0.028517000,0.112867000
+Basketball_v_Basketball_g02_c01,RawErr,VideoMAE-only,0.285585000,0.159247000,0.126338000
+Basketball_v_Basketball_g03_c01,RawErr,VideoMAE-only,0.311920000,0.041098000,0.270822000
+Basketball_v_Basketball_g04_c01,RawErr,VideoMAE-only,0.167105000,0.026201000,0.140904000
+Biking_v_Biking_g01_c01,RawErr,VideoMAE-only,0.287315000,0.148082000,0.139233000
+Biking_v_Biking_g02_c01,RawErr,VideoMAE-only,0.214501000,0.056113000,0.158388000
+Biking_v_Biking_g03_c01,RawErr,VideoMAE-only,0.282166000,0.010147000,0.272019000
+Biking_v_Biking_g04_c01,RawErr,VideoMAE-only,0.160730000,0.135968000,0.024762000
+Diving_v_Diving_g01_c01,RawErr,VideoMAE-only,0.191153000,0.063569000,0.127584000
+Diving_v_Diving_g02_c01,RawErr,VideoMAE-only,0.140057000,0.136267000,0.003790000
+Diving_v_Diving_g03_c01,RawErr,VideoMAE-only,0.122363000,0.282199000,-0.159836000
+Diving_v_Diving_g04_c01,RawErr,VideoMAE-only,0.203094000,0.058719000,0.144375000
+WalkingWithDog_v_WalkingWithDog_g01_c01,RawErr,VideoMAE-only,0.261959000,0.024529000,0.237430000
+WalkingWithDog_v_WalkingWithDog_g02_c01,RawErr,VideoMAE-only,0.244993000,0.019026000,0.225967000
+WalkingWithDog_v_WalkingWithDog_g03_c01,RawErr,VideoMAE-only,0.118547000,0.183387000,-0.064840000
+WalkingWithDog_v_WalkingWithDog_g04_c01,RawErr,VideoMAE-only,0.256201000,0.019741000,0.236460000
+BalanceBeam_v_BalanceBeam_g01_c01,RawErr,RAT+traj.,0.208067000,0.205787000,0.002280000
+BalanceBeam_v_BalanceBeam_g02_c01,RawErr,RAT+traj.,0.404538000,0.388553000,0.015985000
+BalanceBeam_v_BalanceBeam_g03_c01,RawErr,RAT+traj.,0.419823000,0.431024000,-0.011201000
+BalanceBeam_v_BalanceBeam_g10_c03,RawErr,RAT+traj.,0.395098000,0.370255000,0.024843000
+Basketball_v_Basketball_g01_c01,RawErr,RAT+traj.,0.141384000,0.088390000,0.052994000
+Basketball_v_Basketball_g02_c01,RawErr,RAT+traj.,0.285585000,0.270882000,0.014703000
+Basketball_v_Basketball_g03_c01,RawErr,RAT+traj.,0.311920000,0.347809000,-0.035889000
+Basketball_v_Basketball_g04_c01,RawErr,RAT+traj.,0.167105000,0.196461000,-0.029356000
+Biking_v_Biking_g01_c01,RawErr,RAT+traj.,0.287315000,0.198740000,0.088575000
+Biking_v_Biking_g02_c01,RawErr,RAT+traj.,0.214501000,0.216121000,-0.001620000
+Biking_v_Biking_g03_c01,RawErr,RAT+traj.,0.282166000,0.341131000,-0.058965000
+Biking_v_Biking_g04_c01,RawErr,RAT+traj.,0.160730000,0.198982000,-0.038252000
+Diving_v_Diving_g01_c01,RawErr,RAT+traj.,0.191153000,0.171617000,0.019536000
+Diving_v_Diving_g02_c01,RawErr,RAT+traj.,0.140057000,0.128384000,0.011673000
+Diving_v_Diving_g03_c01,RawErr,RAT+traj.,0.122363000,0.093448000,0.028915000
+Diving_v_Diving_g04_c01,RawErr,RAT+traj.,0.203094000,0.215113000,-0.012019000
+WalkingWithDog_v_WalkingWithDog_g01_c01,RawErr,RAT+traj.,0.261959000,0.235146000,0.026813000
+WalkingWithDog_v_WalkingWithDog_g02_c01,RawErr,RAT+traj.,0.244993000,0.265327000,-0.020334000
+WalkingWithDog_v_WalkingWithDog_g03_c01,RawErr,RAT+traj.,0.118547000,0.107849000,0.010698000
+WalkingWithDog_v_WalkingWithDog_g04_c01,RawErr,RAT+traj.,0.256201000,0.276991000,-0.020790000
+BalanceBeam_v_BalanceBeam_g01_c01,IncErr,Random,0.208785000,0.092130000,0.116655000
+BalanceBeam_v_BalanceBeam_g02_c01,IncErr,Random,0.399180000,0.095967000,0.303213000
+BalanceBeam_v_BalanceBeam_g03_c01,IncErr,Random,0.420102000,0.086586000,0.333516000
+BalanceBeam_v_BalanceBeam_g10_c03,IncErr,Random,0.394143000,0.078368000,0.315775000
+Basketball_v_Basketball_g01_c01,IncErr,Random,0.147035000,0.094743000,0.052292000
+Basketball_v_Basketball_g02_c01,IncErr,Random,0.309073000,0.088203000,0.220870000
+Basketball_v_Basketball_g03_c01,IncErr,Random,0.333962000,0.111443000,0.222519000
+Basketball_v_Basketball_g04_c01,IncErr,Random,0.163005000,0.100202000,0.062803000
+Biking_v_Biking_g01_c01,IncErr,Random,0.288747000,0.113065000,0.175682000
+Biking_v_Biking_g02_c01,IncErr,Random,0.217280000,0.099091000,0.118189000
+Biking_v_Biking_g03_c01,IncErr,Random,0.282556000,0.102142000,0.180414000
+Biking_v_Biking_g04_c01,IncErr,Random,0.163851000,0.088979000,0.074872000
+Diving_v_Diving_g01_c01,IncErr,Random,0.190074000,0.102770000,0.087304000
+Diving_v_Diving_g02_c01,IncErr,Random,0.143981000,0.107930000,0.036051000
+Diving_v_Diving_g03_c01,IncErr,Random,0.123884000,0.096367000,0.027517000
+Diving_v_Diving_g04_c01,IncErr,Random,0.206112000,0.108107000,0.098005000
+WalkingWithDog_v_WalkingWithDog_g01_c01,IncErr,Random,0.271421000,0.093269000,0.178152000
+WalkingWithDog_v_WalkingWithDog_g02_c01,IncErr,Random,0.265063000,0.077674000,0.187389000
+WalkingWithDog_v_WalkingWithDog_g03_c01,IncErr,Random,0.121832000,0.105163000,0.016669000
+WalkingWithDog_v_WalkingWithDog_g04_c01,IncErr,Random,0.253564000,0.090286000,0.163278000
+BalanceBeam_v_BalanceBeam_g01_c01,IncErr,Shifted fusion,0.208785000,0.089631000,0.119154000
+BalanceBeam_v_BalanceBeam_g02_c01,IncErr,Shifted fusion,0.399180000,0.044989000,0.354191000
+BalanceBeam_v_BalanceBeam_g03_c01,IncErr,Shifted fusion,0.420102000,0.059011000,0.361091000
+BalanceBeam_v_BalanceBeam_g10_c03,IncErr,Shifted fusion,0.394143000,0.095375000,0.298768000
+Basketball_v_Basketball_g01_c01,IncErr,Shifted fusion,0.147035000,0.066263000,0.080772000
+Basketball_v_Basketball_g02_c01,IncErr,Shifted fusion,0.309073000,0.066526000,0.242547000
+Basketball_v_Basketball_g03_c01,IncErr,Shifted fusion,0.333962000,0.134004000,0.199958000
+Basketball_v_Basketball_g04_c01,IncErr,Shifted fusion,0.163005000,0.156043000,0.006962000
+Biking_v_Biking_g01_c01,IncErr,Shifted fusion,0.288747000,0.101244000,0.187503000
+Biking_v_Biking_g02_c01,IncErr,Shifted fusion,0.217280000,0.126857000,0.090423000
+Biking_v_Biking_g03_c01,IncErr,Shifted fusion,0.282556000,0.077758000,0.204798000
+Biking_v_Biking_g04_c01,IncErr,Shifted fusion,0.163851000,0.100115000,0.063736000
+Diving_v_Diving_g01_c01,IncErr,Shifted fusion,0.190074000,0.060007000,0.130067000
+Diving_v_Diving_g02_c01,IncErr,Shifted fusion,0.143981000,0.075151000,0.068830000
+Diving_v_Diving_g03_c01,IncErr,Shifted fusion,0.123884000,0.075396000,0.048488000
+Diving_v_Diving_g04_c01,IncErr,Shifted fusion,0.206112000,0.060076000,0.146036000
+WalkingWithDog_v_WalkingWithDog_g01_c01,IncErr,Shifted fusion,0.271421000,0.031898000,0.239523000
+WalkingWithDog_v_WalkingWithDog_g02_c01,IncErr,Shifted fusion,0.265063000,0.054912000,0.210151000
+WalkingWithDog_v_WalkingWithDog_g03_c01,IncErr,Shifted fusion,0.121832000,0.071416000,0.050416000
+WalkingWithDog_v_WalkingWithDog_g04_c01,IncErr,Shifted fusion,0.253564000,0.059738000,0.193826000
+BalanceBeam_v_BalanceBeam_g01_c01,IncErr,VideoMAE-only,0.208785000,0.004500000,0.204285000
+BalanceBeam_v_BalanceBeam_g02_c01,IncErr,VideoMAE-only,0.399180000,0.000464000,0.398716000
+BalanceBeam_v_BalanceBeam_g03_c01,IncErr,VideoMAE-only,0.420102000,0.000466000,0.419636000
+BalanceBeam_v_BalanceBeam_g10_c03,IncErr,VideoMAE-only,0.394143000,0.000487000,0.393656000
+Basketball_v_Basketball_g01_c01,IncErr,VideoMAE-only,0.147035000,0.025672000,0.121363000
+Basketball_v_Basketball_g02_c01,IncErr,VideoMAE-only,0.309073000,0.172105000,0.136968000
+Basketball_v_Basketball_g03_c01,IncErr,VideoMAE-only,0.333962000,0.030064000,0.303898000
+Basketball_v_Basketball_g04_c01,IncErr,VideoMAE-only,0.163005000,0.006251000,0.156754000
+Biking_v_Biking_g01_c01,IncErr,VideoMAE-only,0.288747000,0.130900000,0.157847000
+Biking_v_Biking_g02_c01,IncErr,VideoMAE-only,0.217280000,0.038322000,0.178958000
+Biking_v_Biking_g03_c01,IncErr,VideoMAE-only,0.282556000,0.000858000,0.281698000
+Biking_v_Biking_g04_c01,IncErr,VideoMAE-only,0.163851000,0.135874000,0.027977000
+Diving_v_Diving_g01_c01,IncErr,VideoMAE-only,0.190074000,0.055018000,0.135056000
+Diving_v_Diving_g02_c01,IncErr,VideoMAE-only,0.143981000,0.139096000,0.004885000
+Diving_v_Diving_g03_c01,IncErr,VideoMAE-only,0.123884000,0.301902000,-0.178018000
+Diving_v_Diving_g04_c01,IncErr,VideoMAE-only,0.206112000,0.047582000,0.158530000
+WalkingWithDog_v_WalkingWithDog_g01_c01,IncErr,VideoMAE-only,0.271421000,0.012922000,0.258499000
+WalkingWithDog_v_WalkingWithDog_g02_c01,IncErr,VideoMAE-only,0.265063000,0.008761000,0.256302000
+WalkingWithDog_v_WalkingWithDog_g03_c01,IncErr,VideoMAE-only,0.121832000,0.190902000,-0.069070000
+WalkingWithDog_v_WalkingWithDog_g04_c01,IncErr,VideoMAE-only,0.253564000,0.006026000,0.247538000
+BalanceBeam_v_BalanceBeam_g01_c01,IncErr,RAT+traj.,0.208785000,0.206268000,0.002517000
+BalanceBeam_v_BalanceBeam_g02_c01,IncErr,RAT+traj.,0.399180000,0.381899000,0.017281000
+BalanceBeam_v_BalanceBeam_g03_c01,IncErr,RAT+traj.,0.420102000,0.431485000,-0.011383000
+BalanceBeam_v_BalanceBeam_g10_c03,IncErr,RAT+traj.,0.394143000,0.366235000,0.027908000
+Basketball_v_Basketball_g01_c01,IncErr,RAT+traj.,0.147035000,0.090129000,0.056906000
+Basketball_v_Basketball_g02_c01,IncErr,RAT+traj.,0.309073000,0.294125000,0.014948000
+Basketball_v_Basketball_g03_c01,IncErr,RAT+traj.,0.333962000,0.375092000,-0.041130000
+Basketball_v_Basketball_g04_c01,IncErr,RAT+traj.,0.163005000,0.195693000,-0.032688000
+Biking_v_Biking_g01_c01,IncErr,RAT+traj.,0.288747000,0.191275000,0.097472000
+Biking_v_Biking_g02_c01,IncErr,RAT+traj.,0.217280000,0.219908000,-0.002628000
+Biking_v_Biking_g03_c01,IncErr,RAT+traj.,0.282556000,0.343606000,-0.061050000
+Biking_v_Biking_g04_c01,IncErr,RAT+traj.,0.163851000,0.205763000,-0.041912000
+Diving_v_Diving_g01_c01,IncErr,RAT+traj.,0.190074000,0.169247000,0.020827000
+Diving_v_Diving_g02_c01,IncErr,RAT+traj.,0.143981000,0.130351000,0.013630000
+Diving_v_Diving_g03_c01,IncErr,RAT+traj.,0.123884000,0.092175000,0.031709000
+Diving_v_Diving_g04_c01,IncErr,RAT+traj.,0.206112000,0.219057000,-0.012945000
+WalkingWithDog_v_WalkingWithDog_g01_c01,IncErr,RAT+traj.,0.271421000,0.242125000,0.029296000
+WalkingWithDog_v_WalkingWithDog_g02_c01,IncErr,RAT+traj.,0.265063000,0.289456000,-0.024393000
+WalkingWithDog_v_WalkingWithDog_g03_c01,IncErr,RAT+traj.,0.121832000,0.109862000,0.011970000
+WalkingWithDog_v_WalkingWithDog_g04_c01,IncErr,RAT+traj.,0.253564000,0.276399000,-0.022835000
